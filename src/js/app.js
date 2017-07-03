@@ -1,3 +1,6 @@
 import '../scss/app.scss';
 
-console.log('App loaded!');
+/* Your JS Code goes here */
+
+/* Demo JS */
+import './demo.js';
