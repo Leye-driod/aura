@@ -1,119 +1,75 @@
-/**
- * Webpack main configuration file
- */
-
-const path = require('path');
-const fs = require('fs');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { extendDefaultPlugins } = require('svgo');
-
-const environment = require('./configuration/environment');
-
-const templateFiles = fs.readdirSync(environment.paths.source)
-  .filter((file) => path.extname(file).toLowerCase() === '.html');
-
-const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin({
-  inject: true,
-  hash: false,
-  filename: template,
-  template: path.resolve(environment.paths.source, template),
-  favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
-}));
+// webpack v4
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackMd5Hash = require("webpack-md5-hash");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: {
-    app: path.resolve(environment.paths.source, 'js', 'app.js'),
-  },
+  entry: { main: "./src/index.js" },
   output: {
-    filename: 'js/[name].js',
-    path: environment.paths.output,
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[hash].js"
+  },
+  devServer: {
+    contentBase: "./dist",
+    port: 7700
   },
   module: {
     rules: [
       {
-        test: /\.((c|sa|sc)ss)$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-      },
-      {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
-        test: /\.(png|gif|jpe?g|svg)$/i,
+        test: /\.css$/,
         use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: 'images/design/[name].[hash:6].[ext]',
-              publicPath: '../',
-              limit: environment.limits.images,
-            },
-          },
-        ],
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader"
+        ]
       },
       {
-        test: /\.(eot|ttf|woff|woff2)$/,
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              bypassOnDebug: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "file-loader",
             options: {
-              name: 'fonts/[name].[hash:6].[ext]',
-              publicPath: '../',
-              limit: environment.limits.fonts,
-            },
-          },
-        ],
-      },
-    ],
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
+    // new CleanWebpackPlugin("dist", {}),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: "style.[contenthash].css"
     }),
-    new ImageMinimizerPlugin({
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      minimizerOptions: {
-        // Lossless optimization with custom option
-        // Feel free to experiment with options for better result for you
-        plugins: [
-          ['gifsicle', { interlaced: true }],
-          ['jpegtran', { progressive: true }],
-          ['optipng', { optimizationLevel: 5 }],
-          [
-            'svgo',
-            {
-              plugins: extendDefaultPlugins([
-                {
-                  name: 'removeViewBox',
-                  active: false,
-                },
-              ]),
-            },
-          ],
-        ],
-      },
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: "./src/index.html",
+      filename: "index.html"
     }),
-    new CleanWebpackPlugin({
-      verbose: true,
-      cleanOnceBeforeBuildPatterns: ['**/*', '!stats.json'],
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(environment.paths.source, 'images', 'content'),
-          to: path.resolve(environment.paths.output, 'images', 'content'),
-          toType: 'dir',
-          globOptions: {
-            ignore: ['*.DS_Store', 'Thumbs.db'],
-          },
-        },
-      ],
-    }),
-  ].concat(htmlPluginEntries),
-  target: 'web',
+    new WebpackMd5Hash()
+  ]
 };
