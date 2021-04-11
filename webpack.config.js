@@ -2,6 +2,7 @@
  * Webpack main configuration file
  */
 
+const webpack = require('webpack')
  const path = require('path');
  const fs = require('fs');
  const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -32,6 +33,8 @@
      filename: 'js/[name].js',
      path: environment.paths.output,
    },
+
+
    module: {
      rules: [
        {
@@ -71,10 +74,18 @@
        },
      ],
    },
+
+
    plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+   
+    }),
      new MiniCssExtractPlugin({
        filename: 'css/[name].css',
      }),
+
      new ImageMinimizerPlugin({
        test: /\.(jpe?g|png|gif|svg)$/i,
        minimizerOptions: {
