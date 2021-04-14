@@ -66,9 +66,9 @@
   },
   "target": "web",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "bootstrap": "^4.6.0",
     "bootswatch": "^4.6.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "popper": "^1.0.1"
   }

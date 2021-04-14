@@ -1,11 +1,14 @@
 @import '~bootswatch/dist/materia/variables';
+
 @import '~bootstrap/scss/bootstrap';
+
+
 @import '~bootswatch/dist/materia/bootswatch';
 
 
 
 /* Core variables */
-
+@import './theme/vars';
 
 /* CSS Reset */
 
@@ -14,7 +17,7 @@
 
 
 /* Fonts */
-
+@import '~font-awesome/css/font-awesome.css';
 
 /* Mixins, helpers and functions */
 

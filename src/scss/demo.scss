@@ -2,3 +2,18 @@ body {
   background: $gray-100;
 
 }
+
+$transition-collapse:         height 0s;
+
+.collapse {
+  &:not(.show) {
+    display: none;
+  }
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  @include transition($transition-collapse);
+}
+
