@@ -7,28 +7,32 @@ console.log(demo());
 
 $(document).ready(function () {
     console.log('loading-------')
-    $('.bar--times').show();
-    var trigger = $('button[data-toggle=side-nav]'),
+
+
+    var trigger = $('button[data-toggle=collapse]'),
       overlay = $('.overlay'),
-     isClosed = false;
+     isOpened = false;
 
     trigger.on('click', function () {
-        $('.side-nav').collapse();
-        sideNav(isClosed);      
+        $('.collapse').collapse();
+        isOpened = !isOpened;
+        sideNav(isOpened);      
     });
 
 })
 
-function sideNav(isClosed) {
+function sideNav(isOpened) {
     
-    isClosed = !isClosed;
-    if (isClosed == true) {          
-      $('.bar--icon').hide()
-      $('.bar--times').removeClass('d-none');
-    } else {   
-        $('.bar--icon').show()
-        $('.bar--times').addClass('d-none');
-      
+    if (isOpened == true) { 
+        $(".icon-default").hide()
+        $(".icon-hover").removeClass('d-none')         
+        
+
+    } else if (isOpened == false) {   
+  
+        $(".icon-default").show()
+        $(".icon-hover").addClass('d-none')
+        
     }
 }
 

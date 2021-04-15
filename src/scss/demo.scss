@@ -1,9 +1,24 @@
+$transition-collapse:         height 0s;
+
 body {
   background: $gray-100;
 
 }
 
-$transition-collapse:         height 0s;
+// // breakpoints
+// @media (min-width: 576px) { ... }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) { ... }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) { ... }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) { ... }
+
+
+
 
 .collapse {
   &:not(.show) {
@@ -17,3 +32,21 @@ $transition-collapse:         height 0s;
   @include transition($transition-collapse);
 }
 
+.navbar-collapse {
+  position: absolute !important;
+  z-index: 100;
+  background-color: #2196f3 !important;
+
+  height: 100vh;
+  width: 600px;
+  overflow: hidden;
+
+@media (min-width: 992px) {
+ 
+    position: absolute !important;
+    top: 80px;
+    left: 871px;
+  
+}
+
+}
