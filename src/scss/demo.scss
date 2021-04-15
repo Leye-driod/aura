@@ -50,3 +50,12 @@ body {
 }
 
 }
+
+.carousel img {
+  border-radius: 30px;
+  background-color: transparent;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  background-image: none;
+}
