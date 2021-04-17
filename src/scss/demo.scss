@@ -59,3 +59,18 @@ body {
 .carousel-control-next, .carousel-control-prev {
   background-image: none;
 }
+
+.jumbotron.aura--jumbotron {
+  height: 365px;
+line-height: 3px;
+letter-spacing: 0.1px;
+word-spacing: 2px;
+}
+.btn.jumbotron__btn--lg {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
