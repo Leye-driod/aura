@@ -51,9 +51,26 @@ body {
 
 }
 
-.carousel img {
-  border-radius: 30px;
+
+.row.aura--carousel {
+
+  img {
+    height: 70vh !important;
+    width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
   background-color: transparent;
+
+  }
+
+  
+ 
+}
+
+.carousel img {
+  
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -62,15 +79,31 @@ body {
 
 .jumbotron.aura--jumbotron {
   height: 365px;
-line-height: 3px;
-letter-spacing: 0.1px;
-word-spacing: 2px;
+  
 }
-.btn.jumbotron__btn--lg {
+.jumbotron.aura--jumbotron div :not(.no-opacity) {
+  opacity: 0.5;
+}
+
+.btn.jumbotron__btn {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   padding-left: 40px;
   padding-right: 40px;
+  box-shadow: none;
+}
+
+.aura--jumbotron__line-height {
+
+  line-height: 2.93333rem;
+}
+
+.no--text-transform {
+  text-transform: none;
+}
+
+.aura--section__seperator {
+  height: 10vh;
 }
