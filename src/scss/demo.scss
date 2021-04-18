@@ -141,3 +141,20 @@ body {
 .aura--section__seperator {
   height: 10vh;
 }
+
+
+.aur--img {
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+ 
+
+  @media (min-width: 768px) { 
+    width: 48vw; 
+    height: 70vh;
+   }
+
+   @media (min-width: 992px) { 
+    height: 40vh;
+    width: 40vw; 
+  }
+}
