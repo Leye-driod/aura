@@ -30,7 +30,7 @@ const webpack = require('webpack')
      app: path.resolve(environment.paths.source, 'js', 'app.js'),
    },
    output: {
-     filename: 'js/[name].js',
+     filename: 'js/bundle.js',
      path: environment.paths.output,
    },
 
