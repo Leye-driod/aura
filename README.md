@@ -1,38 +1,8 @@
 # Aura
 
+### Demo
 
-## Demo
-
-* [Demo page demonstrating building - SASS, JavaScript, Images, Fonts, HTML](https://weareathlon.github.io/frontend-webpack-boilerplate/)
-
-Table of Contents
-=================
-
-   * [Webpack 5 Boilerplate Template](#webpack-5-boilerplate-template)
-      * [Demo](#demo)
-      * [Features](#features)
-      * [Requirements](#requirements)
-   * [Setup](#setup)
-      * [Installation](#installation)
-      * [Define Package Metadata](#define-package-metadata)
-   * [Configuration](#configuration)
-      * [Environment Configuration](#environment-configuration)
-      * [Additional webpack configuration](#additional-webpack-configuration)
-   * [Development](#development)
-      * [Assets Source](#assets-source)
-      * [Build Assets](#build-assets)
-         * [One time build assets for development](#one-time-build-assets-for-development)
-         * [Build assets and enable source files watcher](#build-assets-and-enable-source-files-watcher)
-         * [Start a development server - reloading automatically after each file change.](#start-a-development-server---reloading-automatically-after-each-file-change)
-   * [Production](#production)
-      * [Build Assets](#build-assets-1)
-      * [Get Built Assets](#get-built-assets)
-   * [Run Code Style Linters](#run-code-style-linters)
-      * [SASS](#sass)
-      * [JavaScript](#javascript)
-   * [Additional Tools](#additional-tools)
-      * [Run Assets Bundle Analyzer](#run-assets-bundle-analyzer)
-      * [Continuous Integration](#continuous-integration)
+[`Homepage](https://github.com/Leye-driod/aura/index.html")
 
 ## Features
 
