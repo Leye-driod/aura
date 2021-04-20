@@ -72,5 +72,20 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "popper": "^1.0.1"
+  },
+
+  
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+ 
+    "prep": [
+      "build-sass"
+
+    ],
+    "commit": "Deploy Application",
+    "post": [
+      "clean-source"
+    ],
+    "noprompt": false
   }
 }
